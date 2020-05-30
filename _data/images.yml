@@ -1,0 +1,21 @@
+animation:
+  - file: StudioFlemma000.jpg
+    key: 0%
+  - file: StudioFlemma006.jpg
+    key: 5%
+  - file: StudioFlemma007.jpg
+    key: 10%
+  - file: StudioFlemma010.jpg
+    key: 15%
+  - file: StudioFlemma013.jpg
+    key: 20%
+  - file: StudioFlemma014.jpg
+    key: 30%
+  - file: StudioFlemma015.jpg
+    key: 50%
+  - file: StudioFlemma016.jpg
+    key: 60%
+  - file: StudioFlemma020.jpg
+    key: 80%
+  - file: StudioFlemma000.jpg
+    key: 100%
