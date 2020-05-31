@@ -6,7 +6,7 @@ id: home
 
 # [ˈflɛmma]
 
-![flemma-x](/flemma/images/StudioFlemma000.jpg)
+![flemma-x](/flemma/images/StudioFlemma006.jpg)
 
 <script>
 files = {{ site.data.images["animation"] | jsonify }};
