@@ -27,8 +27,9 @@
     <!--     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script> -->
     <!--     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> -->
     <!-- styles -->
-    <link rel="stylesheet" href="/flemma/styles/style.css">
+    <link rel="stylesheet" href="{% if jekyll.environment == "production" %}/flemma{% endif %}/styles/style.css">
   </head>
+  <h3>{{root}}</h3>
   <body class="{{ page.id }}">
     {{ content }}
   </body>

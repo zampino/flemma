@@ -3,10 +3,9 @@ title: "[ˈflɛmma]"
 layout: default
 id: home
 ---
-
 # [ˈflɛmma]
 
-![flemma-x](/flemma/images/StudioFlemma006.jpg)
+![flemma-x]({% if jekyll.environment == "production" %}/flemma{% endif %}/images/StudioFlemma006.jpg)
 
 <script>
 files = {{ site.data.images["animation"] | jsonify }};
