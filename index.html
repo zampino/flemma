@@ -1,0 +1,24 @@
+---
+title: "[ˈflɛmma]"
+layout: default
+id: home
+---
+<h1>[ˈflɛmma]</h1>
+<!-- ![flemma-x]({% if jekyll.environment == "production" %}/flemma{% endif %}/images/StudioFlemma006.jpg) -->
+<div id="gallery">
+{% for img in site.data.images.animation %}
+{% capture url %}{% if jekyll.environment == "production" %}/flemma{% endif %}/images/{{img.file}}{% endcapture %}
+<img src="{{url}}"/>
+{% endfor %}
+</div>
+<script>
+imgs = Array.from(document.getElementsByTagName('img'));
+// hide all images at start
+imgs.forEach((img, i) => {
+  console.log(i);
+  if (i > 0) img.style.display = "none"
+});
+// files = {{ site.data.images["animation"] | jsonify }};
+// wait for all images to load
+window.onload = e => app(e, imgs)
+</script>

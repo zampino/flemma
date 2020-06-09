@@ -16,11 +16,11 @@ body {
   flex-flow: column;
 }
 
-p {
+#gallery {
   flex: 1;
   display: flex;
   overflow: hidden;
-  position:relative;
+  position: relative;
 }
 
 img {
