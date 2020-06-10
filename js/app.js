@@ -63,14 +63,17 @@ function shuffle(a) {
     return a;
 }
 
+let show = (imgs, i) => {
+  // if (i > 0) { imgs[i - 1].style.display = 'none'; }
+  hideAll(imgs)
+  imgs[i].style.display = 'block';
+}
 
-// (defn animate [f]
-//   (let [t0  (now)
-//         f'  (fn animate* []
-//               (when (f (/ (- (now) t0) 1000))
-//                 (raf animate*)))]
-//     (f')))
-
+let hideAll = (imgs) => {
+  imgs.forEach((img, i) => {
+    img.style.display = "none"
+  });
+}
 
 function app(e, imgs) {
   // let doAnimate = function(){
@@ -91,37 +94,45 @@ function app(e, imgs) {
   //       }
   //   })
   // }
+
   let doAnimate = () => {
     let last = performance.now()
-    shuffle(imgs)
+    // hideAll(imgs)
     let n = imgs.length
     let i = 0
-    let delta = 500
-    console.log("images ", n)
+    let delta = 200
+    console.log("starting - images ", n)
     let frameFn = (t, prev) => {
-      // console.log("frameFn", t - prev)
-      if (t - prev > delta) {
-        i = i + 1
-        console.log("show:", i)
+      if (i < imgs.length) {
+        if (t - prev > delta) {
+          console.log("show:", i)
+          show(imgs, i)
+          i = i + 1
+          last = performance.now()
+        }
         return true
+      } else {
+        if (t - prev > 10 * delta) {
+          console.log("End now - shuffle")
+          shuffle(imgs)
+          return false
+        } else {
+          return true
+        }
       }
     }
     let f = function g(t) {
-        if (i == imgs.length) {
-          console.log("End now")
-          return
-        }
-        if (frameFn(t, last)) {
-          last = performance.now()
-        }
+      if (frameFn(t, last)) {
         requestAnimationFrame(g)
+      } else {
+        doAnimate()
       }
+    }
     f()
   }
   console.log("boot app", e)
-  // doAnimate()
-  ivl = setInterval(doAnimate, 10000)
-  // doAnimate()
+  // ivl = setInterval(doAnimate, 10000)
+  doAnimate()
 }
 // show each frame for Δ
 // now - last > Δ
