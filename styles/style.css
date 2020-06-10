@@ -16,7 +16,7 @@ body {
   flex-flow: column;
 }
 
-p {
+header, #gallery {
   flex: 1;
   display: flex;
   overflow: hidden;
@@ -50,3 +50,5 @@ body.home h1 {
   left: 10px; */
   margin: 10px 20px;
 }
+
+/* @media only screen and (max-width: 600px) {} */

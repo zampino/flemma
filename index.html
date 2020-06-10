@@ -3,10 +3,11 @@ title: "[ˈflɛmma]"
 layout: default
 id: home
 ---
-# [ˈflɛmma]
-
-![flemma-x]({% if jekyll.environment == "production" %}/flemma{% endif %}/images/StudioFlemma006.jpg)
-
+<a href="/about"><h1>[ˈflɛmma]</h1></a>
+<!-- <h1>[ˈflɛmma]</h1> -->
+<div id="gallery">
+<img src="{% if jekyll.environment == "production" %}/flemma{% endif %}/images/StudioFlemma006.jpg" />
+</div>
 <script>
 im = document.getElementsByTagName('img')[0];
 files = {{ site.data.images["animation"] | jsonify }};
