@@ -66,12 +66,12 @@ function shuffle(a) {
 let show = (imgs, i) => {
   // if (i > 0) { imgs[i - 1].style.display = 'none'; }
   hideAll(imgs)
-  imgs[i].style.display = 'block';
+  imgs[i].classList.add("active")
 }
 
 let hideAll = (imgs) => {
   imgs.forEach((img, i) => {
-    img.style.display = "none"
+    img.classList.remove("active")
   });
 }
 
