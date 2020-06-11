@@ -54,7 +54,7 @@ function animateValues(values, duration, options) {
   }
   animation()
 }
-av = animateValues;
+//
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -62,23 +62,57 @@ function shuffle(a) {
     }
     return a;
 }
-function doAnimate() {
-  shuffle(files)
-  var idx = 0;
-  av({i: 0},
-     1500,
-     {i: 10,
-      onUpdate: function(v){
-        var vi = Math.floor(v.i)
-        if(!vi) return;
-        if (vi != idx) {
-          im.src = 'images/' + files[idx].file
-          idx = vi
+
+let show = (imgs, i) => {
+  // if (i > 0) { imgs[i - 1].style.display = 'none'; }
+  hideAll(imgs)
+  imgs[i].classList.add("active")
+}
+
+let hideAll = (imgs) => {
+  imgs.forEach((img, i) => {
+    img.classList.remove("active")
+  });
+}
+
+function app(e, imgs) {
+  let doAnimate = () => {
+    let last = performance.now()
+    // hideAll(imgs)
+    let n = imgs.length
+    let i = 0
+    let delta = 200
+    console.log("starting - images ", n)
+    let frameFn = (t, prev) => {
+      if (i < imgs.length) {
+        if (t - prev > delta) {
+          console.log("show:", i)
+          show(imgs, i)
+          i = i + 1
+          last = performance.now()
+        }
+        return true
+      } else {
+        if (t - prev > 10 * delta) {
+          console.log("End now - shuffle")
+          shuffle(imgs)
+          return false
+        } else {
+          return true
         }
       }
-  })
-}
-function app(e) {
+    }
+    let f = function g(t) {
+      if (frameFn(t, last)) {
+        requestAnimationFrame(g)
+      } else {
+        doAnimate()
+      }
+    }
+    f()
+  }
   console.log("boot app", e)
-  ivl = setInterval(doAnimate, 3000)
+  setTimeout(doAnimate, 2000)
 }
+// show each frame for Δ
+// now - last > Δ

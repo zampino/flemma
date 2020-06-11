@@ -4,12 +4,15 @@ layout: default
 id: home
 ---
 <a href="/about"><h1>[ˈflɛmma]</h1></a>
-<!-- <h1>[ˈflɛmma]</h1> -->
+<!-- ![flemma-x]({% if jekyll.environment == "production" %}/flemma{% endif %}/images/StudioFlemma006.jpg) -->
 <div id="gallery">
-<img src="{% if jekyll.environment == "production" %}/flemma{% endif %}/images/StudioFlemma006.jpg" />
+{% for img in site.data.images.animation %}
+{% capture url %}{% if jekyll.environment == "production" %}/flemma{% endif %}/images/{{img.file}}{% endcapture %}
+<img src="{{url}}"/>
+{% endfor %}
 </div>
 <script>
-im = document.getElementsByTagName('img')[0];
-files = {{ site.data.images["animation"] | jsonify }};
-window.onload = e => app(e, im, files)
+imgs = Array.from(document.getElementsByTagName('img'));
+imgs[0].classList.add("active")
+window.onload = e => app(e, imgs)
 </script>
