@@ -54,7 +54,7 @@ function animateValues(values, duration, options) {
   }
   animation()
 }
-av = animateValues;
+//
 function shuffle(a) {
     for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -76,25 +76,6 @@ let hideAll = (imgs) => {
 }
 
 function app(e, imgs) {
-  // let doAnimate = function(){
-  //   shuffle(imgs)
-  //   var idx = 0;
-  //   av({i: 0},
-  //      1500,
-  //      {i: imgs.length - 1,
-  //       onUpdate: function(v, t){
-  //         var vi = Math.floor(v.i)
-  //         if(!vi) return;
-  //         if (vi != idx) {
-  //           imgs[vi].style.display = 'block';
-  //           console.log("show", vi, t)
-  //           if (vi > 0) { imgs[vi - 1].style.display = 'none'; }
-  //           idx = vi
-  //         }
-  //       }
-  //   })
-  // }
-
   let doAnimate = () => {
     let last = performance.now()
     // hideAll(imgs)
@@ -131,8 +112,7 @@ function app(e, imgs) {
     f()
   }
   console.log("boot app", e)
-  // ivl = setInterval(doAnimate, 10000)
-  doAnimate()
+  setTimeout(doAnimate, 2000)
 }
 // show each frame for Δ
 // now - last > Δ
